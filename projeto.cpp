@@ -17,22 +17,24 @@ int main() {
         int a, b;
         scanf("%d %d", &a, &b);
         if(!validatePerson(a, pessoas) || !validatePerson(b, pessoas) || a == b) continue;
-        // people[a - 1][b - 1] = 1;
-        // people[b - 1][a - 1] = 1;
-        // situations[a - 1] = situations[a - 1] + 1;
-        // situations[b - 1] = situations[b - 1] + 1;
+        people[a - 1][b - 1] = 1;
+        people[b - 1][a - 1] = 1;
     }
 
-    // for(int i = 0; i < pessoas; i++) {
-    //     printf("%d\n", situations[i]);
-    // }
-
-    // for(int i = 0; i < pessoas; i++) {
-    //     for(int j = 0; j < pessoas; j++) {
-    //         printf("%d ", people[i][j]);
-    //     }
-    //     printf("\n");
-    // }
+    for(int i = 0; i < pessoas; i++) {
+        if(i == 0)
+            printf("   ");
+        printf("%d ", i + 1);
+        if(i == pessoas - 1)
+            printf("\n");
+    }
+    for(int i = 0; i < pessoas; i++) {
+        printf("%d: ", i + 1);
+        for(int j = 0; j < pessoas; j++) {
+            printf("%d ", people[i][j]);
+        }
+        printf("\n");
+    }
 
     // int result = 0;
     // for(int i = 0; i < pessoas; i++) {
