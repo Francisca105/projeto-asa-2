@@ -4,11 +4,11 @@ C++ = g++
 C++FLAGS = -std=c++11 -O3 -Wall
 
 OUT_FILE=proj
-MAIN_FILE=projeto.cpp
+MAIN_FILE=scc.cpp
 
 all: main
 
-main: projeto.cpp
+main: $(MAIN_FILE)
 	$(C++) $(C++FLAGS) -o $(OUT_FILE) $(MAIN_FILE) -lm
 
 .PHONY: clean
