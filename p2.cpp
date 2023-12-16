@@ -29,8 +29,8 @@ class Vertice {
 class Grafo {
     private:
         std::vector<Vertice*> *vertices;    // vector de vértices
-        std::list<int> *fwdAdjList;         // lista de adjacencias
-        std::list<int> *revAdjList;         // lista de adjacencias do grafo transposto
+        std::vector<int> *fwdAdjList;         // lista de adjacencias
+        std::vector<int> *revAdjList;         // lista de adjacencias do grafo transposto
     
     public:
         Grafo(int V) {
@@ -38,13 +38,13 @@ class Grafo {
             for (int i=0; i<V; i++) {
                 (*vertices)[i] = new Vertice(i);
             }
-            this->fwdAdjList = new std::list<int>[V];
-            this->revAdjList = new std::list<int>[V];
+            this->fwdAdjList = new std::vector<int>[V];
+            this->revAdjList = new std::vector<int>[V];
         }
         
         std::vector<Vertice*> *getVertices() {return this->vertices;}
-        std::list<int> *getFwdAdjList() {return this->fwdAdjList;}
-        std::list<int> *getRevAdjList() {return this->revAdjList;}
+        std::vector<int> *getFwdAdjList() {return this->fwdAdjList;}
+        std::vector<int> *getRevAdjList() {return this->revAdjList;}
 };
 
 bool compareVertices(Vertice *u, Vertice *v) {
@@ -53,7 +53,7 @@ bool compareVertices(Vertice *u, Vertice *v) {
 
 void DFS(Grafo *grafo, int V) {
     std::vector<Vertice*> *vertices = grafo->getVertices();
-    std::list<int> *AdjList = grafo->getFwdAdjList();
+    std::vector<int> *AdjList = grafo->getFwdAdjList();
 
     std::vector<int> visited(V, 0);
     std::stack<int> dfsStack;
@@ -85,7 +85,7 @@ void DFS(Grafo *grafo, int V) {
 
 int DFS2(Grafo *grafo, int V, std::vector<int> indexes) {
     std::vector<Vertice*> *vertices = grafo->getVertices();
-    std::list<int> *AdjList = grafo->getRevAdjList();
+    std::vector<int> *AdjList = grafo->getRevAdjList();
     std::vector<int> visited(V, 0);
     std::stack<int> dfsStack;
     std::vector<int> sccs;
@@ -136,8 +136,8 @@ int main() {
 
     Grafo *grafo = new Grafo(V);
     std::vector<Vertice*> *vertices = grafo->getVertices();
-    std::list<int> *fwdAdjList = grafo->getFwdAdjList();
-    std::list<int> *revAdjList = grafo->getRevAdjList();
+    std::vector<int> *fwdAdjList = grafo->getFwdAdjList();
+    std::vector<int> *revAdjList = grafo->getRevAdjList();
 
     for (int i=0; i<E; i++) {
         int x, y;
